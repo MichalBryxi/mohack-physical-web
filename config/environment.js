@@ -3,10 +3,11 @@
 module.exports = function(environment) {
   var ENV = {
     firebase: {
-      apiKey: 'xyz',
-      authDomain: 'YOUR-FIREBASE-APP.firebaseapp.com',
-      databaseURL: 'https://YOUR-FIREBASE-APP.firebaseio.com',
-      storageBucket: 'YOUR-FIREBASE-APP.appspot.com',
+      apiKey: "AIzaSyCB_FhKTBV4gA7se5t-Szy6kYgPSv5knPM",
+      authDomain: "mohack-physical-web.firebaseapp.com",
+      databaseURL: "https://mohack-physical-web.firebaseio.com",
+      storageBucket: "mohack-physical-web.appspot.com",
+      messagingSenderId: "837680327196"
     },
     modulePrefix: 'mohack-physical-web',
     environment: environment,

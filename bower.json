@@ -1,9 +1,11 @@
 {
-  "name": "mohack",
+  "name": "mohack-physical-web",
   "dependencies": {
     "ember": "~2.7.0",
     "ember-cli-shims": "0.1.1",
     "ember-qunit-notifications": "0.1.0",
-    "firebase": "^3.0.0"
+    "firebase": "^3.0.0",
+    "hammer.js": "^2.0.8",
+    "matchMedia": "0.2.0"
   }
 }

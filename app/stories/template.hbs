@@ -1,8 +1,67 @@
-<!-- app/templates/posts.hbs -->
-<section>
-{{#each model as |story|}}
-<div>
-  <div>{{story.body}}</div>
-</div>
-{{/each}}
+<img src="http://jvprice.co.uk/wp-content/uploads/2015/04/Movember.jpg" />
+<p>
+  It's not just about the nuts. Share your story.
+  {{#paper-button iconButton=true onClick=(action (mut showDialogWithParent))}}
+    {{paper-icon "info"}}
+  {{/paper-button}}
+</p>
+
+
+{{#if showDialogWithParent}}
+  {{#paper-dialog onClose=(action "closeDialogWithParent" "cancel") parent="#paper-dialog-demo" origin=dialogOrigin clickOutsideToClose=true}}
+    <form>
+      {{#paper-toolbar}}
+        <div class="md-toolbar-tools">
+          <h2>About</h2>
+          <span class="flex"></span>
+          {{#paper-button iconButton=true onClick=(action "closeDialogWithParent" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+        </div>
+      {{/paper-toolbar}}
+
+      {{#paper-dialog-content}}
+        <div style="max-width:800px;max-height:810px;">
+          <p>
+            Movember is not just about cancer. Share your story here &amp; <a href="https://uk.movember.com">find out more</a>.
+          </p>
+        </div>
+      {{/paper-dialog-content}}
+
+      {{#paper-dialog-actions class="layout-row"}}
+        <span class="flex"></span>
+        {{#paper-button onClick=(action "closeDialogWithParent" "ok")}}OK{{/paper-button}}
+      {{/paper-dialog-actions}}
+    </form>
+  {{/paper-dialog}}
+{{/if}}
+
+{{#paper-form onSubmit=(action "newStory") as |form|}}
+  <div class="layout-column">
+    {{paper-input
+      textarea=true
+      block=true
+      label="My story:"
+      maxlength=150
+      passThru=(hash rows=5 maxRows=5)
+      value=newStory.body
+      onChange=(action (mut newStory.body))
+    }}
+    {{#form.submit-button raised=true primary=true}}
+      Submit
+    {{/form.submit-button}}
+  </div>
+{{/paper-form}}
+
+{{paper-divider}}
+
+<section class="layout-column">
+  {{#each model as |story|}}
+    {{#paper-card class="flex" as |card|}}
+      {{#card.content class="layout-row layout-align-space-between"}}
+        <p>{{story.body}}</p>
+        <p class="muted">
+          {{moment story.createdAt 'MM-DD-YYYY'}}
+        </p>
+      {{/card.content}}
+    {{/paper-card}}
+  {{/each}}
 </section>
