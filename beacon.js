@@ -1,4 +1,4 @@
 var eddystoneBeacon = require('eddystone-beacon');
-var url = 'https://mohack-physical-web.firebaseapp.com';
+var url = 'http://bit.ly/mohack-pw';
 
 eddystoneBeacon.advertiseUrl(url);
