@@ -5,6 +5,9 @@ export default Ember.Controller.extend({
     body: ''
   },
   showDialogWithParent: false,
+  storiesSorted: Ember.computed.sort('model', function (a, b) {
+    return a.get('createdAt') < b.get('createdAt');
+  }),
 
   actions: {
     newStory: function () {

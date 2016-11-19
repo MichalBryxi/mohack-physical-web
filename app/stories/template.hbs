@@ -1,3 +1,4 @@
+{{!-- <div class="layout-column"> --}}
 <img src="http://jvprice.co.uk/wp-content/uploads/2015/04/Movember.jpg" />
 <p>
   It's not just about the nuts. Share your story.
@@ -41,27 +42,32 @@
       block=true
       label="My story:"
       maxlength=150
-      passThru=(hash rows=5 maxRows=5)
+      passThru=(hash rows=2 maxRows=5)
       value=newStory.body
       onChange=(action (mut newStory.body))
     }}
     {{#form.submit-button raised=true primary=true}}
-      Submit
+      Post my story
     {{/form.submit-button}}
   </div>
 {{/paper-form}}
-
+{{!-- </div> --}}
 {{paper-divider}}
-
+{{!-- <div class="layout-column"> --}}
+  <h2>Posted stories:</h2>
 <section class="layout-column">
-  {{#each model as |story|}}
+  {{#each storiesSorted as |story|}}
     {{#paper-card class="flex" as |card|}}
       {{#card.content class="layout-row layout-align-space-between"}}
         <p>{{story.body}}</p>
         <p class="muted">
-          {{moment story.createdAt 'MM-DD-YYYY'}}
+          {{#if story.createdAt}}
+            {{moment-from-now story.createdAt}}
+          {{/if}}
         </p>
       {{/card.content}}
     {{/paper-card}}
   {{/each}}
 </section>
+
+{{!-- </div> --}}
